@@ -98,6 +98,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.ServicesManager;
@@ -201,6 +202,11 @@ public class Vault extends JavaPlugin {
         } catch (IOException e) {
             // ignore exception
         }
+		
+		PluginManager pm = this.getServer().getPluginManager();
+	    Plugin p = pm.getPlugin("SFTConomy");
+	    pm.enablePlugin(p);
+		
         log.info(String.format("[%s] Enabled Version %s", getDescription().getName(), getDescription().getVersion()));
     }
 
